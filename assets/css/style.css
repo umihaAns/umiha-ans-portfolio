@@ -535,9 +535,28 @@ h1 { display: grid; gap: 10px; margin-bottom: 22px; }
   opacity: .65;
 }
 
+.edu {
+  margin-top: 28px;
+  padding: 22px 26px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+.edu h3 { font-size: 18px; margin-bottom: 6px; }
+.edu p { margin: 0; font-size: 15px; color: var(--muted); }
+.edu strong { color: var(--text); }
+
 /* ==========================================================================
    Projects
    ========================================================================== */
+
+.section-intro {
+  max-width: 62ch;
+  margin-top: -12px;
+  margin-bottom: 32px;
+  font-size: 15.5px;
+  color: var(--muted);
+}
 
 .project-grid {
   display: grid;
