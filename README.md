@@ -13,7 +13,7 @@ files directly.
 index.html            all page content
 assets/css/style.css  styling (light + dark theme)
 assets/js/main.js     theme toggle, mobile menu, scroll reveal
-assets/img/           photo, project images, favicon.svg
+assets/img/           favicon.svg and any project images
 assets/Umiha-Ans-CV.pdf   CV download (add this file)
 ```
 
@@ -30,11 +30,12 @@ Replace in this order:
 5. **Skills** — tags inside each `.skill-card`.
 6. **Experience** — each `<li>` in `.timeline` (dates, job title, company, bullet points).
 7. **Projects** — each `.project-card` (type, title, description, links).
-8. **Photo** — drop the image in `assets/img/` and swap the `.avatar` div for the
-   `<img class="avatar-img">` line noted in the comment beside it.
-9. **CV** — save the PDF as `assets/Umiha-Ans-CV.pdf`.
-10. **Social preview** (optional) — add a 1200x630 image and an
-    `<meta property="og:image">` tag so shared links show a preview card.
+8. **CV** — edit `cv.html`, then run `bash tools/build-cv.sh` to regenerate
+   `assets/Umiha-Ans-CV.pdf`.
+9. **Social preview** (optional) — add a 1200x630 image and an
+   `<meta property="og:image">` tag so shared links show a preview card.
+
+The hero uses a "UA" monogram by choice — there is deliberately no photo.
 
 ## Running locally
 
