@@ -13,7 +13,7 @@ files directly.
 index.html            all page content
 assets/css/style.css  styling (light + dark theme)
 assets/js/main.js     theme toggle, mobile menu, scroll reveal
-assets/img/           photo and any project images
+assets/img/           photo, project images, favicon.svg
 assets/Umiha-Ans-CV.pdf   CV download (add this file)
 ```
 
@@ -33,6 +33,8 @@ Replace in this order:
 8. **Photo** — drop the image in `assets/img/` and swap the `.avatar` div for the
    `<img class="avatar-img">` line noted in the comment beside it.
 9. **CV** — save the PDF as `assets/Umiha-Ans-CV.pdf`.
+10. **Social preview** (optional) — add a 1200x630 image and an
+    `<meta property="og:image">` tag so shared links show a preview card.
 
 ## Running locally
 

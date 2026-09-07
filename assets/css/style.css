@@ -13,6 +13,8 @@
   --line:      #e5e1da;
   --accent:    #a8542c;
   --accent-2:  #f3e6dd;
+  /* text on --accent-2 needs to be darker to clear WCAG AA at small sizes */
+  --accent-ink: #8c4522;
   --shadow-sm: 0 1px 2px rgba(22, 24, 29, .05), 0 1px 3px rgba(22, 24, 29, .04);
   --shadow-md: 0 4px 12px rgba(22, 24, 29, .06), 0 2px 4px rgba(22, 24, 29, .04);
   --shadow-lg: 0 12px 32px rgba(22, 24, 29, .09), 0 4px 8px rgba(22, 24, 29, .04);
@@ -35,6 +37,7 @@
   --line:      #2a2f37;
   --accent:    #e08a5c;
   --accent-2:  #2b211b;
+  --accent-ink: #eda173;
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, .4);
   --shadow-md: 0 4px 12px rgba(0, 0, 0, .45);
   --shadow-lg: 0 12px 32px rgba(0, 0, 0, .5);
@@ -187,17 +190,26 @@ svg {
 :root[data-theme="dark"] .icon-sun  { display: none; }
 :root[data-theme="dark"] .icon-moon { display: block; }
 
-.menu-btn { display: none; gap: 4px; }
+/* Bars are absolutely centred rather than laid out in grid rows, so the two
+   halves of the X land on exactly the same point when the menu opens. */
+.menu-btn { display: none; position: relative; }
 .menu-btn span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
   width: 17px;
   height: 1.6px;
+  margin: -.8px 0 0 -8.5px;
   background: currentColor;
   border-radius: 2px;
-  transition: transform .2s, opacity .2s;
+  transition: transform .22s ease, opacity .18s ease;
 }
-.menu-btn[aria-expanded="true"] span:nth-child(1) { transform: translateY(5.6px) rotate(45deg); }
+.menu-btn span:nth-child(1) { transform: translateY(-5.6px); }
+.menu-btn span:nth-child(3) { transform: translateY(5.6px); }
+
+.menu-btn[aria-expanded="true"] span:nth-child(1) { transform: rotate(45deg); }
 .menu-btn[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
-.menu-btn[aria-expanded="true"] span:nth-child(3) { transform: translateY(-5.6px) rotate(-45deg); }
+.menu-btn[aria-expanded="true"] span:nth-child(3) { transform: rotate(-45deg); }
 
 /* ==========================================================================
    Hero
@@ -494,7 +506,7 @@ h1 { display: grid; gap: 10px; margin-bottom: 22px; }
   padding: 2px 9px;
   border-radius: 999px;
   background: var(--accent-2);
-  color: var(--accent);
+  color: var(--accent-ink);
   font-size: 11.5px;
   font-weight: 600;
   letter-spacing: .02em;
@@ -554,7 +566,7 @@ h1 { display: grid; gap: 10px; margin-bottom: 22px; }
   padding: 4px 11px;
   border-radius: 999px;
   background: var(--accent-2);
-  color: var(--accent);
+  color: var(--accent-ink);
   font-size: 12px;
   font-weight: 600;
   letter-spacing: .02em;
@@ -712,6 +724,7 @@ h1 { display: grid; gap: 10px; margin-bottom: 22px; }
     box-shadow: none;
     break-inside: avoid;
   }
-  .reveal { opacity: 1; transform: none; }
+  /* must out-specify `.has-js .reveal`, or an early print loses the content */
+  .has-js .reveal { opacity: 1; transform: none; }
   a { text-decoration: none; }
 }

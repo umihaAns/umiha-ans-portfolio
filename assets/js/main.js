@@ -9,12 +9,12 @@
   var themeBtn = document.getElementById('themeToggle');
   var navLinks = nav ? Array.prototype.slice.call(nav.querySelectorAll('a')) : [];
 
-  /* ---- theme: stored choice wins, otherwise follow the OS ---- */
+  /* ---- theme: the initial value is set by the inline script in <head>;
+         here we only handle the toggle and OS changes ---- */
   var stored = null;
   try { stored = localStorage.getItem('theme'); } catch (e) { /* private mode */ }
 
   var prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
-  root.setAttribute('data-theme', stored || (prefersDark.matches ? 'dark' : 'light'));
 
   prefersDark.addEventListener('change', function (e) {
     if (!stored) root.setAttribute('data-theme', e.matches ? 'dark' : 'light');
